@@ -124,6 +124,8 @@ public class Sessions {
 
         gameDTO.setTied(gameOver.isTied());
 
+        gameDTO.setGameId(gameOver.gameId());
+
         System.out.println();
         return gameDTO;
     }
