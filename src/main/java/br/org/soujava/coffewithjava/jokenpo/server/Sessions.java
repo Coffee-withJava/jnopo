@@ -122,6 +122,7 @@ public class Sessions {
         gameDTO.setPlayerBId(gameOver.playerBInfo().gameId());
         gameDTO.setPlayerBMovement(gameOver.playerBMovement().toString());
 
+        gameDTO.setTied(gameOver.isTied());
 
         System.out.println();
         return gameDTO;
