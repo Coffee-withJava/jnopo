@@ -114,11 +114,11 @@ public class Sessions {
 
         GameDTO gameDTO = new GameDTO();
 
-        gameDTO.setNamePlayerA(objA.get(0));
+        gameDTO.setNamePlayerA(objA.get(1));
         gameDTO.setPlayerAId(gameOver.playerAInfo().gameId());
         gameDTO.setPlayerAMovement(gameOver.playerAMovement().toString());
 
-        gameDTO.setNamePlayerB(objB.get(0));
+        gameDTO.setNamePlayerB(objB.get(1));
         gameDTO.setPlayerBId(gameOver.playerBInfo().gameId());
         gameDTO.setPlayerBMovement(gameOver.playerBMovement().toString());
 
@@ -126,7 +126,6 @@ public class Sessions {
 
         gameDTO.setGameId(gameOver.gameId());
 
-        System.out.println();
         return gameDTO;
     }
 
