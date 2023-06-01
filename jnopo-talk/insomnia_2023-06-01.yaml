@@ -1,0 +1,156 @@
+_type: export
+__export_format: 4
+__export_date: 2023-06-01T20:47:19.292Z
+__export_source: insomnia.desktop.app:v2021.7.2
+resources:
+  - _id: req_dce4837efc574f8e87a02935aa7b4b76
+    parentId: wrk_8a8b4dba11fd4cb099e635fe01f6b940
+    modified: 1685638798756
+    created: 1685634831344
+    url: localhost:8080/jnopo-talk/rest/game-matchers?name=Z
+    name: Get winners by name
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication: {}
+    metaSortKey: -1685634831344
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: wrk_8a8b4dba11fd4cb099e635fe01f6b940
+    parentId: null
+    modified: 1685634818070
+    created: 1685634818070
+    name: Jakarta JNoSQL
+    description: ""
+    scope: collection
+    _type: workspace
+  - _id: req_ccb90e6551794fdf9e00ad33e7f33f3c
+    parentId: wrk_8a8b4dba11fd4cb099e635fe01f6b940
+    modified: 1685645322392
+    created: 1685645281014
+    url: localhost:8080/jnopo-talk/rest/library
+    name: List Library
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication: {}
+    metaSortKey: -1685634831294
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_5d88a27ec1724190a4ea6a6c0acb6246
+    parentId: wrk_8a8b4dba11fd4cb099e635fe01f6b940
+    modified: 1685645529060
+    created: 1685645471922
+    url: localhost:8080/jnopo-talk/rest/library/by-name?name=baba
+    name: List Library by Name
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication: {}
+    metaSortKey: -1682491667916.25
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_05fe085650084db1badffe30b2cd6fed
+    parentId: wrk_8a8b4dba11fd4cb099e635fe01f6b940
+    modified: 1685645575515
+    created: 1685645556139
+    url: localhost:8080/jnopo-talk/rest/library/by-book?name=java
+    name: List Library by Book name
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication: {}
+    metaSortKey: -1680920086227.375
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_6f21c33b39d8479fbe5b08350c7fe00c
+    parentId: wrk_8a8b4dba11fd4cb099e635fe01f6b940
+    modified: 1685645455910
+    created: 1685645313815
+    url: localhost:8080/jnopo-talk/rest/library
+    name: Create Library
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"id":"4",
+        	"name":"eaea",
+        	"book":{
+        		"name":"java"
+        	}
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_86775104f7e84956a6cb99dd0a3a6604
+    authentication: {}
+    metaSortKey: -1679348504538.5
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: env_064e630fa06aad4445ba9707716343be0504c615
+    parentId: wrk_8a8b4dba11fd4cb099e635fe01f6b940
+    modified: 1685634818076
+    created: 1685634818076
+    name: Base Environment
+    data: {}
+    dataPropertyOrder: null
+    color: null
+    isPrivate: false
+    metaSortKey: 1685634818076
+    _type: environment
+  - _id: jar_064e630fa06aad4445ba9707716343be0504c615
+    parentId: wrk_8a8b4dba11fd4cb099e635fe01f6b940
+    modified: 1685634818077
+    created: 1685634818077
+    name: Default Jar
+    cookies: []
+    _type: cookie_jar
+  - _id: spc_c4fb03f31d0d44619764d355f9518e3c
+    parentId: wrk_8a8b4dba11fd4cb099e635fe01f6b940
+    modified: 1685634818072
+    created: 1685634818072
+    fileName: Jakarta JNoSQL
+    contents: ""
+    contentType: yaml
+    _type: api_spec
