@@ -3,6 +3,7 @@ package br.org.soujava.coffewithjava.jnopo;
 import jakarta.ejb.Schedule;
 import jakarta.ejb.Singleton;
 import jakarta.ejb.Startup;
+import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.json.bind.Jsonb;
 import jakarta.json.bind.JsonbBuilder;
@@ -18,14 +19,12 @@ import org.eclipse.microprofile.config.inject.ConfigProperty;
 import java.io.IOException;
 import java.net.URI;
 import java.nio.ByteBuffer;
-import java.util.concurrent.Callable;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Future;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 @Singleton
 @Startup
+@ApplicationScoped
 @ClientEndpoint
 public class JNopoCatcher {
 
@@ -36,6 +35,9 @@ public class JNopoCatcher {
     @Inject
     @ConfigProperty(name = "jnopo-game.websocket-url")
     private String url;
+
+    @Inject
+    private GameMatches gameMatches;
 
     private Session session;
 
@@ -66,9 +68,11 @@ public class JNopoCatcher {
     @OnMessage
     public void onMessage(String message) {
         logger.info("Received the event >> %s".formatted(message));
-        var event = jsonb.fromJson(message, GameEvent.class);
-        logger.info("Converted input >> %s".formatted(event));
 
+        var event = jsonb.fromJson(message, GameEvent.class);
+
+        var gameMatch = event.toGameMatch();
+        gameMatches.save(gameMatch);
     }
 
     @Schedule(second = "*/15", hour = "*", minute = "*")
