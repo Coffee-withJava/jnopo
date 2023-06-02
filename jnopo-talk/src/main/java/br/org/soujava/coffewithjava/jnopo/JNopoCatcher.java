@@ -1,5 +1,6 @@
 package br.org.soujava.coffewithjava.jnopo;
 
+import br.org.soujava.coffewithjava.jnopo.core.Player;
 import jakarta.ejb.Schedule;
 import jakarta.ejb.Singleton;
 import jakarta.ejb.Startup;
@@ -37,6 +38,9 @@ public class JNopoCatcher {
     @ConfigProperty(name = "jnopo-game.websocket-url")
     private String url;
 
+    @Inject
+    private Playoffs playoffs;
+
     private Session session;
 
     private void connect() {
@@ -67,7 +71,27 @@ public class JNopoCatcher {
     public void onMessage(String message) {
         logger.info("Received the event >> %s".formatted(message));
         var event = jsonb.fromJson(message, GameEvent.class);
-        logger.info("Converted input >> %s".formatted(event));
+
+        var gameMatch = new GameMatch();
+
+        gameMatch.setId(event.gameover().gameId());
+        gameMatch.setPlayerAName(event.gameover().playerAMovement().name());
+        gameMatch.setPlayerAMovement(event.gameover().playerAMovement());
+
+        gameMatch.setPlayerBName(event.gameover().playerBMovement().name());
+        gameMatch.setPlayerBMovement(event.gameover().playerBMovement());
+
+
+        event.gameover().winner().map(Player::name).ifPresent(gameMatch::setWinnerName);
+        event.gameover().winnerMovement().ifPresent(gameMatch::setWinnerMovement);
+
+
+        event.gameover().loser().map(Player::name).ifPresent(gameMatch::setLoserName);
+        event.gameover().loserMovement().ifPresent(gameMatch::setLoserMovement);
+
+        gameMatch.setTied(event.gameover().isTied());
+
+        playoffs.save(gameMatch);
 
     }
 
